@@ -1,0 +1,59 @@
+//JSON Tutorial
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JSON</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var data = [
+        {
+          "Title" : "The Avengers",
+          "Release" : 2012,
+          "Watchable" : true,
+          "Casts": [
+            {
+              "Actor" : "Robert"
+            }
+          ]
+        },
+        {
+          "Title" : "Thor",
+          "Release" : 2011,
+          "Watchable" : false,
+          "Casts": [
+            {
+              "Actor" : "Chris"
+            }
+          ]
+        }
+      ]
+      var data1 = '[
+        {
+          "Title" : "The Avengers",
+          "Release" : 2012,
+          "Watchable" : true;
+          "Casts": [
+            {
+              "Actor" : "Robert"
+            }
+          ]
+        },
+        {
+          "Title" : "Thor",
+          "Release" : 2011,
+          "Watchable" : false;
+          "Casts": [
+            {
+              "Actor" : "Chris"
+            }
+          ]
+        }
+      ]
+'
+      console.log(JSON.stringify(data))
+      console.log(JSON.parse(data1))
+    </script>
+  </body>
+</html>
