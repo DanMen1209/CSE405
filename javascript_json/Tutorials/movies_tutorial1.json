@@ -1,0 +1,24 @@
+//JSON Tutorial
+
+[
+  {
+    "Title" : "The Avengers",
+    "Release" : 2012,
+    "Watchable" : true;
+    "Casts": [
+      {
+        "Actor" : "Robert"
+      }
+    ]
+  },
+  {
+    "Title" : "Thor",
+    "Release" : 2011,
+    "Watchable" : false;
+    "Casts": [
+      {
+        "Actor" : "Chris"
+      }
+    ]
+  }
+]
