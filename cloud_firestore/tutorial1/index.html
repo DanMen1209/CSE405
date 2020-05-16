@@ -1,0 +1,50 @@
+﻿// From lesson one...poerosnalize later...
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
+
+</head>
+<body>
+
+    <h1>Cloud Cafe</h1>
+
+    <div class="content">
+
+        <form id="add-cafe-form"></form>
+
+        <ul id="cafe-list"></ul>
+
+    </div>
+
+    <script>// Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyA7tGDRQN65VrA4iLAMXNKqpGuDsFYN-lc",
+            authDomain: "firestore-tutorial-86ece.firebaseapp.com",
+            databaseURL: "https://firestore-tutorial-86ece.firebaseio.com",
+            projectId: "firestore-tutorial-86ece",
+            storageBucket: "firestore-tutorial-86ece.appspot.com",
+            messagingSenderId: "821850364377",
+            appId: "1:821850364377:web:3d0544defb8465fde861c8",
+            measurementId: "G-TDYZ2TWL2K"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        const db = firebase.firestore();
+        db.settings({ timestampInSnapshots = true });
+    </script>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
