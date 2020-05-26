@@ -1,20 +1,24 @@
 ﻿<Properties StartupConfiguration="{117448F6-A1BA-4B7B-942F-38D266C9B061}|Default">
-  <MonoDevelop.Ide.ItemProperties.tutorial1 FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="styles.css">
+  <MonoDevelop.Ide.ItemProperties.tutorial1 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Startup.cs">
     <Files>
-      <File FileName="index.html" Line="24" Column="8" />
+      <File FileName="index.html" Line="24" Column="1" />
       <File FileName="styles.css" Line="1" Column="1" />
+      <File FileName="app.js" Line="2" Column="32" />
+      <File FileName="Startup.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="tutorial1" expanded="True">
             <Node name="tutorial1" expanded="True">
-              <Node name="Properties" expanded="True" />
-              <Node name="styles.css" selected="True" />
+              <Node name="index.html" selected="True" />
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
