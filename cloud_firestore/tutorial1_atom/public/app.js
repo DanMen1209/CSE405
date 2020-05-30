@@ -8,7 +8,7 @@ function renderCafe(doc){
 
   li.setAttribute('data-id', doc.id);
   name.textContent = doc.data().name;
-  city.textContent = doct.data().city;
+  city.textContent = doc.data().city;
 
   li.appendChild(name);
   li.appendChild(city);
