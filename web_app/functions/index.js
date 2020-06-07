@@ -4,37 +4,63 @@ const functions = require('firebase-functions');
 const firebase = require('firebase-admin');
   //Including service account key file, not needed for cloud based app
 //const serviceAccount = require('web-app-e8b75-firebase-adminsdk-tbm10-ae800dcd02.json")';
-  //Using express framework
+  //Using express framework (important)
 const express = require('express');
-  //Using engine cosolidate
-const engines = require('consolidate');
+  //Engine cosolidate, not being used for this attempt
+//const engines = require('consolidate');
+  //include morgan to log
+const logger = require('morgan');
+  //retrieve info from input
+const bodyParser = require('body-parser');
 
-  //instead of using long code to ini firebase, using
+  //instead of using long code to initialize firebase, using
   //the functions code to retrieve the configuration
-  //because I am on firebase cloud
+  //because I am using firebase cloud
 const firebaseApp = firebase.initializeApp(
   functions.config().firebase
 );
 
-  //for firestore
+  //declare firestore
 const db = firebase.firestore();
 
   //real time database code to retrieve data
-function getFacts() {
-  const ref = firebaseApp.database().ref('facts');
-  return ref.once('value').then(snap => snap.val());
-}
+  //temporarily not in use during this attempt
+//function getFacts() {
+  //const ref = firebaseApp.database().ref('facts');
+  //return ref.once('value').then(snap => snap.val());
+//}
 
-  //reference to database collection, firestore
-const studentCollection = db.collection("students");
+  //example reference to database collection, firestore
+//const studentCollection = db.collection("students");
 
-  //setting app to express
+  //Create instance of express app
 const app = express();
 
-  //setting up index.hbs
-app.engine('hbs', engines.handlebars);
-app.set('views', './views');
-app.set('view engine', 'hbs');
+  //want to use javascript and html
+  //ejs = embedded javascript
+app.set('view engine', 'ejs')
+
+  //for css imagages and other static files
+app.use(express.static('views'))
+app.set('views', __dirname + '/views')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(logger('dev'))
+
+app.get('/', function(request, response){
+  //response.send("<h1>Hello World<h1>")
+  response.render('home.ejs')
+})
+
+app.post('/', function(request, response){
+  const student = (request.body.student)
+  response.render('results.ejs', {data: student})
+})
+
+  //setting up index.hbs, not in use during this attempt
+//app.engine('hbs', engines.handlebars);
+//app.set('views', './views');
+//app.set('view engine', 'hbs');
 
   //without cache, new timestamp sent every refresh instantly
 //app.get('/timestamp',(request, response) => {
@@ -48,20 +74,21 @@ app.set('view engine', 'hbs');
   //response.send(`${Date.now()}`);
 //});
 
-app.get('/test',(request, response) => {
-  response.render('index');
-})
+  //segment for testing code...
+//app.get('/test',(request, response) => {
+  //response.render('index');
+//})
 
-  //load at index url
-app.get('/',(request, response) => {
-  response.set('Cache-Control', 'public, max-age=300, s-maxage=600');
-  //response.send(`${Date.now()}`);
-  //reponse.render('index', { facts });
+  //load at index url, not in use during this attempt
+//app.get('/',(request, response) => {
+  //response.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+    //response.send(`${Date.now()}`);
+    //reponse.render('index', { facts });
 
     //below is for real time database
-  getFacts().then(facts => {
-    response.render('index', { facts });
-  });
-});
+  //getFacts().then(facts => {
+    //response.render('index', { facts });
+  //});
+//});
 
 exports.app = functions.https.onRequest(app);
