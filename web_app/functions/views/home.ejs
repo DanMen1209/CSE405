@@ -11,6 +11,10 @@
       https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
 
+    <!-- Add Firebase products that you want to use -->
+  <script src="/__/firebase/7.15.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.15.0/firebase-firestore.js"></script>
+
     <script>
       // Your web app's Firebase configuration
       var firebaseConfig = {
@@ -30,9 +34,27 @@
 
   </head>
   <body>
-    <h1>CSUSB Petition</h1>
+    <h1>CSUSB Voting System</h1>
 
     <p>Login with Firebase</p>
+    <img id="google-pic" src="" />
+    <p id="google-email"></p>
+    <button onclick={signInWithGoogle()}>
+      Sign In With Google
+      </button>
+      <script>
+        function signInWithGoogle(){
+          var googleAuthProvider = new firebase.auth.GoogleAuthProvider
+
+          firebase.auth().signInWithPopup(googleAuthProvider)
+          .then(function(data){
+            console.log(data)
+          })
+          .catch(function(error){
+            console.log(error)
+          })
+        }
+        </script>
 
     <form method="POST">
       <p>Enter your student ID: <input name="student" /></p>
